@@ -96,6 +96,18 @@ namespace KeywordDriven
                         }
                         locatorName = null;
                         break;
+                    case "css selector":
+                        IWebElement elementByCssSelector = driver.FindElement(By.CssSelector(locatorValue));
+                        if (action_values.Equals("sendkeys"))
+                        {
+                            elementByCssSelector.SendKeys(values);
+                        }
+                        else if (action_values.Equals("click"))
+                        {
+                            elementByCssSelector.Click();
+                        }
+                        locatorName = null;
+                        break;
                     default:
                         break;
                 }                              
