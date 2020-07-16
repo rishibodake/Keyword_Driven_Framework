@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using _Excel = Microsoft.Office.Interop.Excel;
 using System;
+using System.Threading;
 
 namespace KeywordDriven
 {
@@ -9,6 +10,7 @@ namespace KeywordDriven
     {
         IWebDriver driver;
         
+
         _Application excel = new _Excel.Application();
         Workbook workBook;
         Worksheet workSheet;
@@ -28,7 +30,7 @@ namespace KeywordDriven
         {
             
             int k = 1;
-            for(int index = 0; index < 6; index++)
+            for(int index = 0; index < 11; index++)
             {
 
                 Range range = (Range)workSheet.Cells[index+1,k+1];
@@ -57,25 +59,42 @@ namespace KeywordDriven
                     case "enter url":
                         driver.Url = values;
                         break;
+                    case "close":
+                        driver.Close();
+                        break;
                     case "quit":
                         driver.Quit();
                         break;
                     default:
                         break;
                 }
-
+              
                 switch (locatorName)
                 {
+                    
                     case "name":
-                        IWebElement ele = driver.FindElement(By.Name(locatorValue));
+                        IWebElement elementByName = driver.FindElement(By.Name(locatorValue));                  
                         if (action_values.Equals("sendkeys"))
                         {
-                            ele.SendKeys(values + Keys.Enter);
+                            elementByName.SendKeys(values);
                         }
                         else if(action_values.Equals("click"))
                         {
-                            ele.Click();
+                            elementByName.Click();
                         }
+                        locatorName = null;
+                        break;
+                    case "id":
+                        IWebElement elementById = driver.FindElement(By.Id(locatorValue));
+                        if (action_values.Equals("sendkeys"))
+                        {
+                            elementById.SendKeys(values);                           
+                        }
+                        else if (action_values.Equals("click"))
+                        {
+                            elementById.Click();                          
+                        }
+                        locatorName = null;
                         break;
                     default:
                         break;
