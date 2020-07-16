@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeywordDriven", "KeywordDriven\KeywordDriven.csproj", "{29E95276-5A10-4242-AAA6-737CB29E5385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyCheck", "KeyCheck\KeyCheck.csproj", "{35FF5E01-FE1F-494B-A229-5E470C19E940}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29E95276-5A10-4242-AAA6-737CB29E5385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29E95276-5A10-4242-AAA6-737CB29E5385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29E95276-5A10-4242-AAA6-737CB29E5385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29E95276-5A10-4242-AAA6-737CB29E5385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35FF5E01-FE1F-494B-A229-5E470C19E940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35FF5E01-FE1F-494B-A229-5E470C19E940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35FF5E01-FE1F-494B-A229-5E470C19E940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35FF5E01-FE1F-494B-A229-5E470C19E940}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D378B28-B2CB-4702-8FDB-B448A15DF07F}
+	EndGlobalSection
+EndGlobal
