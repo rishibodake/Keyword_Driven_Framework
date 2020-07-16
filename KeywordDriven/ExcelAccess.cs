@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using OpenQA.Selenium;
 using _Excel = Microsoft.Office.Interop.Excel;
+using System;
 
 namespace KeywordDriven
 {
@@ -11,6 +12,8 @@ namespace KeywordDriven
         _Application excel = new _Excel.Application();
         Workbook workBook;
         Worksheet workSheet;
+
+        
 
         string locatorName = null;
         string locatorValue = null;
@@ -23,25 +26,26 @@ namespace KeywordDriven
 
         public void ExecutionEngine()
         {
+            
             int k = 1;
-            for(int index = 0; index < 4; index++)
+            for(int index = 0; index < 6; index++)
             {
 
                 Range range = (Range)workSheet.Cells[index+1,k+1];
                 string locator = range.Value.ToString();
 
 
-                if (!locator.Equals("NA"))
+                if (!locator.Equals("NA") && locator.Contains("="))
                 {
                     locatorName = locator.Split('=')[0] ;//name
-                    //locatorValue = cellValue.Split('=')[1];//q
+                    locatorValue = locator.Split('=')[1];//q
                 }
 
                 Range range1 = (Range)workSheet.Cells[index+1,k+2];
                 string action_values = range1.Value.ToString();
 
-                 Range range2 = (Range)workSheet.Cells[index+1, k + 3];
-                 string values = range2.Value.ToString();
+                Range range2 = (Range)workSheet.Cells[index+1, k + 3];
+                string values = range2.Value.ToString();
 
 
                 switch (action_values)
@@ -63,7 +67,7 @@ namespace KeywordDriven
                 switch (locatorName)
                 {
                     case "name":
-                        IWebElement ele = driver.FindElement(By.Name("q"));
+                        IWebElement ele = driver.FindElement(By.Name(locatorValue));
                         if (action_values.Equals("sendkeys"))
                         {
                             ele.SendKeys(values + Keys.Enter);
