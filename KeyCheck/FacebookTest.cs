@@ -16,12 +16,10 @@ namespace KeyCheck
         }
 
         [Test]
-        public void SearchTest()
+        public void LoginTest()
         {
             ExcelAccess check = new ExcelAccess(filePath, 2);
-            check.ExecutionEngine();
-
-            // Assert.AreEqual("New", x.ToString());
+            check.ExecutionEngine();          
         }
     }
 }

@@ -30,7 +30,7 @@ namespace KeywordDriven
         {
             
             int k = 1;
-            for(int index = 0; index < 11; index++)
+            for(int index = 0; index < 7; index++)
             {
 
                 Range range = (Range)workSheet.Cells[index+1,k+1];
@@ -93,6 +93,18 @@ namespace KeywordDriven
                         else if (action_values.Equals("click"))
                         {
                             elementById.Click();                          
+                        }
+                        locatorName = null;
+                        break;
+                    case "xpath":
+                        IWebElement elementByXpath = driver.FindElement(By.XPath(locatorValue));
+                        if (action_values.Equals("sendkeys"))
+                        {
+                            elementByXpath.SendKeys(values);
+                        }
+                        else if (action_values.Equals("click"))
+                        {
+                            elementByXpath.Click();
                         }
                         locatorName = null;
                         break;
