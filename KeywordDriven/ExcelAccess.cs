@@ -1,9 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using OpenQA.Selenium;
-using System;
-using System.Configuration;
-using System.Data;
-using System.Data.OleDb;
 using _Excel = Microsoft.Office.Interop.Excel;
 
 namespace KeywordDriven
@@ -28,10 +24,10 @@ namespace KeywordDriven
         public void ExecutionEngine()
         {
             int k = 1;
-            for(int i = 0; i < 4; i++)
+            for(int index = 0; index < 4; index++)
             {
 
-                Range range = (Range)workSheet.Cells[i+1,k+1];
+                Range range = (Range)workSheet.Cells[index+1,k+1];
                 string locator = range.Value.ToString();
 
 
@@ -41,10 +37,10 @@ namespace KeywordDriven
                     //locatorValue = cellValue.Split('=')[1];//q
                 }
 
-                Range range1 = (Range)workSheet.Cells[i+1,k+2];
+                Range range1 = (Range)workSheet.Cells[index+1,k+2];
                 string action_values = range1.Value.ToString();
 
-                 Range range2 = (Range)workSheet.Cells[i+1, k + 3];
+                 Range range2 = (Range)workSheet.Cells[index+1, k + 3];
                  string values = range2.Value.ToString();
 
 
@@ -79,14 +75,8 @@ namespace KeywordDriven
                         break;
                     default:
                         break;
-                }
-                
-               
+                }                              
             }
-
-
-
-
         }
     }
 }
