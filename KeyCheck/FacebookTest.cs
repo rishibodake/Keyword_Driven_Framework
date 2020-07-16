@@ -1,9 +1,12 @@
-using KeywordDriven;
+﻿using KeywordDriven;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace KeyCheck
 {
-    public class Tests
+    public class FacebookTest
     {
         string filePath = "";
         [SetUp]
@@ -15,10 +18,10 @@ namespace KeyCheck
         [Test]
         public void SearchTest()
         {
-            ExcelAccess check = new ExcelAccess(filePath, 1);
+            ExcelAccess check = new ExcelAccess(filePath, 2);
             check.ExecutionEngine();
 
-           // Assert.AreEqual("New", x.ToString());
+            // Assert.AreEqual("New", x.ToString());
         }
     }
 }
