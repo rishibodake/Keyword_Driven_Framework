@@ -14,10 +14,15 @@ namespace KeywordDriven
             switch (browser)
             {
                 case "chrome":
-                    driver = new ChromeDriver();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArgument("--disable-notifications");
+                    driver = new ChromeDriver(chromeOptions);
+                    driver.Manage().Window.Maximize();
                     break;
                 case "firefox":
-                    driver = new FirefoxDriver();
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.SetPreference("dom.webnotifications.enabled", false);
+                    driver = new FirefoxDriver(firefoxOptions);
                     break;
                 case "edge":
                     driver = new EdgeDriver();

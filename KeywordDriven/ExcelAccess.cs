@@ -28,9 +28,14 @@ namespace KeywordDriven
 
         public void ExecutionEngine()
         {
-            
+            _Excel.Range last = workSheet.Cells.SpecialCells(_Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+            _Excel.Range range12 = workSheet.get_Range("A1", last);
+
+            int lastUsedRow = last.Row;
+            int lastUsedColumn = last.Column;
+
             int k = 1;
-            for(int index = 0; index < 7; index++)
+            for(int index = 0; index < lastUsedRow; index++)
             {
 
                 Range range = (Range)workSheet.Cells[index+1,k+1];
@@ -39,8 +44,8 @@ namespace KeywordDriven
 
                 if (!locator.Equals("NA") && locator.Contains("="))
                 {
-                    locatorName = locator.Split('=')[0] ;//name
-                    locatorValue = locator.Split('=')[1];//q
+                    locatorName = locator.Split(new[] { '=' }, 2)[0].Trim() ;//name
+                    locatorValue = locator.Split(new[] { '=' }, 2)[1].Trim();//q
                 }
 
                 Range range1 = (Range)workSheet.Cells[index+1,k+2];
@@ -58,6 +63,7 @@ namespace KeywordDriven
                         break;
                     case "enter url":
                         driver.Url = values;
+                        //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                         break;
                     case "close":
                         driver.Close();
@@ -92,7 +98,8 @@ namespace KeywordDriven
                         }
                         else if (action_values.Equals("click"))
                         {
-                            elementById.Click();                          
+                            elementById.Click();
+                           // Thread.Sleep(3000);
                         }
                         locatorName = null;
                         break;
@@ -101,10 +108,12 @@ namespace KeywordDriven
                         if (action_values.Equals("sendkeys"))
                         {
                             elementByXpath.SendKeys(values);
+                            //Thread.Sleep(3000);
                         }
                         else if (action_values.Equals("click"))
                         {
                             elementByXpath.Click();
+                            //Thread.Sleep(3000);
                         }
                         locatorName = null;
                         break;
